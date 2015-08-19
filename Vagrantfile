@@ -70,8 +70,6 @@ Vagrant.configure(2) do |config|
     sudo dpkg -i puppetlabs-release-precise.deb
     sudo apt-get update
     sudo apt-get install --yes puppet
-	echo "Puppet version: " `puppet --version`
-	echo "Puppet path: " `which puppet`
-    sudo `which puppet` resource package puppet ensure=latest
+    sudo puppet resource package puppet ensure=latest
   SHELL
 end
