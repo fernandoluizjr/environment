@@ -8,7 +8,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision :shell do |s|
     s.path = "scripts/proxy_settings.sh"
-    s.args = ""
     #s.args = "u100218 Epopeia0 proxy.corp.valepresente.local 3128"
   end
 
