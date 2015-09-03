@@ -5,6 +5,15 @@ proxy_pass=$2
 proxy_host=$3
 proxy_port=$4
 
+## NO PROXY
+if [ $# -lt 4 ] || [ -z $proxy_user ] || [ -z $proxy_pass ] || [ -z $proxy_host ] || [ -z $proxy_port ]
+then
+    echo "Provisionando sem proxy"
+    exit 0
+else
+    echo "Provisionando com proxy"
+fi
+
 ## HTTP_PROXY
 grep -q "http_proxy" /etc/environment
 if [ $? -eq 0 ]; then
@@ -36,3 +45,5 @@ if [ $? -eq 0 ]; then
 else
     echo "alias wget=\"wget --proxy-user=$proxy_user --proxy-password=$proxy_pass\"" >>/etc/environment
 fi
+
+exit 0
