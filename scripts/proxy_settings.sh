@@ -1,9 +1,9 @@
 #!/bin/bash
 
-proxy_user=u100218
-proxy_pass=Epopeia0
-proxy_host=proxy.corp.valepresente.local
-proxy_port=3128
+proxy_user=$1
+proxy_pass=$2
+proxy_host=$3
+proxy_port=$4
 
 ## HTTP_PROXY
 grep -q "http_proxy" /etc/environment
@@ -32,7 +32,7 @@ fi
 ## WGET
 grep -q "alias wget" /etc/environment
 if [ $? -eq 0 ]; then
-    sed -i '/alias wget/c\''alias wget=\"wget --proxy-use='"$proxy_user"' --proxy-passwd='"$proxy_pass"'\"' /etc/environment
+    sed -i '/alias wget/c\''alias wget=\"wget --proxy-user='"$proxy_user"' --proxy-password='"$proxy_pass"'\"' /etc/environment
 else
-    echo "alias wget=\"wget --proxy-use=$proxy_user --proxy-passwd=:$proxy_pass\"" >>/etc/environment
+    echo "alias wget=\"wget --proxy-user=$proxy_user --proxy-password=$proxy_pass\"" >>/etc/environment
 fi
