@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+	<!-- Default set of monitored resources -->
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+	<Resource name="jdbc/web" auth="Container" type="javax.sql.DataSource"
+		maxActive="100" maxIdle="30" maxWait="10000" username="<%= db_user %> "
+		password="<%= db_password %> " driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://<%= db_host %> :3306/<%= db_schema %> " />
+
+	<Resource name="jdbc/secure" auth="Container" type="javax.sql.DataSource"
+		maxActive="100" maxIdle="30" maxWait="10000" username="<%= db_user %> "
+		password="<%= db_password %> " driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://<%= db_host %> :3306/<%= db_schema %> " />
+
+	<Resource name="jdbc/storage" auth="Container" type="javax.sql.DataSource"
+		maxActive="100" maxIdle="30" maxWait="10000" username="<%= db_user %> "
+		password="<%= db_password %> " driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://<%= db_host %> :3306/<%= db_schema %> " />
+
+</Context>
