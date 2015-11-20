@@ -11,7 +11,7 @@
 		username="<%= db['user'] %>"
 		password="<%= db['password'] %>"
 		driverClassName="<%= db['driver'] %>"
-		url="<%= db['url'] %>"/>
+		url="<%= db['url'] + db['schema'] %>"/>
 	<%- end -%>
 
 </Context>
