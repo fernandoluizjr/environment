@@ -3,9 +3,7 @@
 
 # README: Vagrant already has ruby and devkit embedded to install plugins,
 # but you have to install vagrant in a directory without espaces to work.
-# Also in the directory .vagrant.d include your generated ssh key vagrant.ppk
-# Install the following plugins of vagrant before to run this file:
-# vagrant plugin install vagrant-librarian-puppet
+# Also in the directory vagrant.d include your generated ssh key vagrant.ppk
 
 VAGRANTFILE_API_VERSION = "2"
 
@@ -20,30 +18,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #  end
 
   config.vm.provision "shell", path: "scripts/puppet_install.sh"
-  config.librarian_puppet.puppetfile_dir = "librarian"
 
   config.vm.define :dev do |dev_config|
     dev_config.vm.network :private_network, :ip => "192.168.33.10"
-#    dev_config.vm.provision "puppet" do |puppet|
-#      puppet.module_path = ["modules", "librarian/modules"]
-#      puppet.manifest_file = "dev.pp"
-#    end
   end
 
 #  config.vm.define :db do |db_config|
 #    db_config.vm.network :private_network, :ip => "192.168.33.10"
-#    db_config.vm.provision "puppet" do |puppet|
-#      puppet.module_path = ["modules", "librarian/modules"]
-#      puppet.manifest_file = "db.pp"
-#    end
 #  end
 
 #  config.vm.define :web do |web_config|
 #    web_config.vm.network :private_network, :ip => "192.168.33.12"
-#    web_config.vm.provision "puppet" do |puppet|
-#      puppet.module_path = ["modules", "librarian/modules"]
-#      puppet.manifest_file = "web.pp"
-#    end
 #  end
 
 #  config.vm.define :mon do |mon_config|
