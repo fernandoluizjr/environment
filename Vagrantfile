@@ -22,13 +22,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "scripts/puppet_install.sh"
   config.librarian_puppet.puppetfile_dir = "librarian"
 
-  config.vm.define :db do |db_config|
-    db_config.vm.network :private_network, :ip => "192.168.33.10"
-    db_config.vm.provision "puppet" do |puppet|
-      puppet.module_path = ["modules", "librarian/modules"]
-      puppet.manifest_file = "db.pp"
-    end
+  config.vm.define :dev do |dev_config|
+    dev_config.vm.network :private_network, :ip => "192.168.33.10"
+#    dev_config.vm.provision "puppet" do |puppet|
+#      puppet.module_path = ["modules", "librarian/modules"]
+#      puppet.manifest_file = "dev.pp"
+#    end
   end
+
+#  config.vm.define :db do |db_config|
+#    db_config.vm.network :private_network, :ip => "192.168.33.10"
+#    db_config.vm.provision "puppet" do |puppet|
+#      puppet.module_path = ["modules", "librarian/modules"]
+#      puppet.manifest_file = "db.pp"
+#    end
+#  end
 
 #  config.vm.define :web do |web_config|
 #    web_config.vm.network :private_network, :ip => "192.168.33.12"
