@@ -1,3 +1,8 @@
+# Classes sao uma forma de dar nome a uma colecao de recursos
+# que serao aplicados como uma unidade. Um bom uso de classes
+# no Puppet eh para configuracao de servicos que voce precisa
+# instalar apenas uma vez no sistema.
+
 class mysql::server {
   package { "mysql-server":
     ensure => installed,
@@ -22,8 +27,7 @@ class mysql::server {
 
   exec { "remove-anonymous-user":
     command => "mysql -uroot -e \"DELETE FROM mysql.user \
-								WHERE user=''; \
-								FLUSH PRIVILEGES\"",
+						WHERE user=''; FLUSH PRIVILEGES\"",
     onlyif => "mysql -u' '",
     path => "/usr/bin",
     require => Service["mysql"],
