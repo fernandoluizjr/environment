@@ -3,7 +3,7 @@
 
 # README: Vagrant already has ruby and devkit embedded to install plugins,
 # but you have to install vagrant in a directory without espaces to work.
-# Also in the directory vagrant.d include your generated ssh key vagrant.ppk
+# Also in directory vagrant.d include your generated ssh key vagrant.ppk
 
 VAGRANTFILE_API_VERSION = "2"
 
