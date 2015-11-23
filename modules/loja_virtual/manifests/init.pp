@@ -10,7 +10,9 @@ class loja_virtual {
 # instalacao de qualquer pacote no sistema
 
   class { 'apt':
-    always_apt_update => true,
+    update => {
+      frequency => 'always',
+    },
   }
 
 # A flecha -> impoe uma restricao na ordem de execucao dos recursos.
