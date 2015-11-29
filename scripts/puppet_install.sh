@@ -28,4 +28,9 @@ if [ $? -eq 0 ]; then
     sed -i '/templatedir/d' /etc/puppet/puppet.conf
 fi
 
+# Copy hiera.yaml to avoid warnings
+if [ -f /etc/hiera.yaml ] && ! [ -f /etc/puppet/hiera.yaml ]; then
+    cp /etc/hiera.yaml /etc/puppet/hiera.yaml
+fi
+
 exit 0
