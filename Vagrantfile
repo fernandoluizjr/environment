@@ -18,6 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #  end
 
   config.vm.provision "shell", path: "scripts/puppet_install.sh"
+  config.vm.provision "shell", path: "scripts/puppet_modules.sh", args: "puppetlabs-apt"
 
   config.vm.define :dev do |dev_config|
     dev_config.vm.network :private_network, :ip => "192.168.33.10"
