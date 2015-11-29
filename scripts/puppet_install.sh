@@ -3,8 +3,9 @@
 # Remove puppet e other gems instaled by vagrant
 if [ -d /opt/vagrant_ruby ]; then
   echo "Removing directory /opt/vagrant_ruby from system and path"
-  PATH=${PATH#/opt/vagrant_ruby/bin:}
-  PATH=${PATH%:/opt/vagrant_ruby/bin}
+  # Removing from PATH is not working since vagrant put it again
+  # export PATH=${PATH#/opt/vagrant_ruby/bin:}
+  # export PATH=${PATH%:/opt/vagrant_ruby/bin}
   rm -rf /opt/vagrant_ruby
 fi
 
