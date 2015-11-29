@@ -2,6 +2,7 @@
 
 directory_environments=$1
 active_node_environment=$2
+manifest_file=$directory_environments/$active_node_environment/manifests/$3
 
 # Enable directory environments
 grep -q "environmentpath=" /etc/puppet/puppet.conf
@@ -18,3 +19,6 @@ if [ $? -eq 0 ]; then
 else
     sed -i 's|\[main\]|&\nenvironment='"$active_node_environment"'|' /etc/puppet/puppet.conf
 fi
+
+# Apply puppet manifest
+puppet apply $manifest_file
