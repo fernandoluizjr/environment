@@ -1,4 +1,4 @@
-class dev_tools {
+class dev {
 
   class { 'apt':
     update => {

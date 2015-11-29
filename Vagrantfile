@@ -24,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     dev_config.vm.network :private_network, :ip => "192.168.33.10"
     dev_config.vm.provision :shell do |ss|
       ss.path = "scripts/puppet_environments.sh"
-      ss.args = "/workspace/environments development dev_tools.pp"
+      ss.args = "/workspace/environments development dev.pp"
     end
   end
 

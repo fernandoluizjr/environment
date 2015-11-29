@@ -1,5 +1,9 @@
 class java::sdk {
 
+  exec {
+    command => "sudo apt-get purge openjdk*"
+  }
+
   apt::ppa { 'ppa:webupd8team/java': }
 
   exec { "accept-license":
