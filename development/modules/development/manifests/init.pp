@@ -1,4 +1,4 @@
-class dev {
+class development {
 
   class { 'apt':
     update => {
