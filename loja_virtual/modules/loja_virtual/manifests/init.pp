@@ -18,7 +18,7 @@ class loja_virtual {
 # A flecha -> impoe uma restricao na ordem de execucao dos recursos.
 # Da mesma forma que o parametro require indica uma dependencia entre
 # dois recursos, a flecha -> garante que o recurso do lado esquerdo -
-# nesse caso a classe apt – seja executado antes do recurso do lado
+# nesse caso a classe apt - seja executado antes do recurso do lado
 # direito. A sintaxe <| |> eh um coletor de recursos. O coletor
 # representa um grupo de recursos e eh composto de: um tipo de recurso,
 # o operador <|, uma expressao de busca opcional e o operador |>.
@@ -26,4 +26,7 @@ class loja_virtual {
 # recursos do tipo package.
 
   Class['apt'] -> Package <| |>
+
+# Outro exemplo:
+# Class['apt::update'] -> Package<| |>
 }
