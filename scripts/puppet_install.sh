@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Remove puppet e other gems instaled by vagrant
+# Remove puppet and other gems instaled by vagrant in precise64 box only
 if [ -d /opt/vagrant_ruby ]; then
   echo "Removing directory /opt/vagrant_ruby from system and path"
   # TODO: Removing from PATH is not working since vagrant provision put it again
