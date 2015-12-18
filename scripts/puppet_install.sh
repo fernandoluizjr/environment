@@ -9,7 +9,7 @@ if [ -d /opt/vagrant_ruby ]; then
   rm -rf /opt/vagrant_ruby
 fi
 
-if which puppet >/dev/null ; then
+if which puppet >/dev/null && [ "$(puppet --version)" == "3.8.4" ]; then
   echo "Puppet is already installed"
 else
   apt-get update
