@@ -20,8 +20,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "scripts/puppet_install.sh"
   config.vm.provision "shell", path: "scripts/puppet_modules.sh", args: "puppetlabs-apt"
 
+#  config.vm.define :mon do |mon_config|
+#    mon_config.vm.hostname = "monitoring"
+#    mon_config.vm.network :private_network, :ip => "192.168.33.10"
+#  end
+
   config.vm.define :dev do |dev_config|
-    dev_config.vm.network :private_network, :ip => "192.168.33.10"
+    dev_config.vm.hostname = "development"
+    dev_config.vm.network :private_network, :ip => "192.168.33.12"
     dev_config.vm.provision :shell do |ss|
       ss.path = "scripts/puppet_environments.sh"
       ss.args = "/workspace/environments development development.pp"
@@ -29,7 +35,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
 #  config.vm.define :db do |db_config|
-#    db_config.vm.network :private_network, :ip => "192.168.33.10"
+#    db_config.vm.hostname = "lojavirtualdb"
+#    db_config.vm.network :private_network, :ip => "192.168.33.14"
 #    db_config.vm.provision :shell do |ss|
 #      ss.path = "scripts/puppet_environments.sh"
 #      ss.args = "/workspace/environments loja_virtual db.pp"
@@ -37,15 +44,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #  end
 
 #  config.vm.define :web do |web_config|
-#    web_config.vm.network :private_network, :ip => "192.168.33.12"
+#    web_config.vm.hostname = "lojavirtualwebapp"
+#    web_config.vm.network :private_network, :ip => "192.168.33.16"
 #    web_config.vm.provision :shell do |ss|
 #      ss.path = "scripts/puppet_environments.sh"
 #      ss.args = "/workspace/environments loja_virtual web.pp"
 #    end
-#  end
-
-#  config.vm.define :mon do |mon_config|
-#    mon_config.vm.network :private_network, :ip => "192.168.33.14"
 #  end
 
 end
