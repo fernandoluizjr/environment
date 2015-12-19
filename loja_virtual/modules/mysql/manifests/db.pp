@@ -4,8 +4,14 @@
 # reutilizados em conjunto. Voce pode interpreta-los como equivalentes
 # a macros em uma linguagem de programacao. Alem disso, eles podem ser
 # parametrizados e definir valores padrao para parametros opcionais.
+# No caso abaixo o parametro $user, quando nao especificado, tera o
+# mesmo valor do parametro especial $title.
 
 define mysql::db($schema, $user = $title, $password) {
+
+# $title eh um parametro especial pq nao precisa ser passado
+# explicitamente. O nome do recurso que instancia o tipo definido,
+# neste caso loja, sera passado como valor do parametro $title.
   Class['mysql::server'] -> Mysql::Db[$title]
 
   exec { "$title-schema":
