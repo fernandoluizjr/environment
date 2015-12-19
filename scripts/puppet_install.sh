@@ -29,6 +29,14 @@ if [ $? -eq 0 ]; then
     sed -i '/templatedir/d' /etc/puppet/puppet.conf
 fi
 
+# Setting the parser future
+grep -q "parser=" /etc/puppet/puppet.conf
+if [ $? -eq 0 ]; then
+    sed -i '/parser=/c\parser=future' /etc/puppet/puppet.conf
+else
+    sed -i 's|\[main\]|&\nparser=future|' /etc/puppet/puppet.conf
+fi
+
 # Copy hiera.yaml to avoid warnings
 if [ -f /etc/hiera.yaml ] && ! [ -f /etc/puppet/hiera.yaml ]; then
     cp /etc/hiera.yaml /etc/puppet/hiera.yaml
