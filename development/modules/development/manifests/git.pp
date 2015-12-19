@@ -4,8 +4,6 @@ class development::git {
   include git::tig
 
   git::config { "git-config":
-    user_name => $development::params::git_config_global[user_name],
-    user_email => $development::params::git_config_global[user_email],
-    core_editor => $development::params::git_config_global[core_editor],
+    global => $development::params::git_config_global,
   }
 }
