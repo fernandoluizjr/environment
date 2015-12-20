@@ -1,4 +1,5 @@
 define git::config($global) {
+  Class['git::git'] -> Git::Config[$title]
 
   $global.each |$key, $val| {
     exec { "git-config-global-$key":
