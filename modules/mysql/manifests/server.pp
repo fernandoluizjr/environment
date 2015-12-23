@@ -11,7 +11,7 @@ class mysql::server {
   file { "/etc/mysql/conf.d/allow_external.cnf":
     owner => mysql,
     group => mysql,
-    mode => 0644,
+    mode => "0644",
     content => template("mysql/allow_ext.cnf"),
     require => Package["mysql-server"],
     notify => Service["mysql"],
