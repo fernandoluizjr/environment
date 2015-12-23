@@ -1,8 +1,9 @@
 class loja_virtual::ci {
   include loja_virtual
+  include java::sdk
   include git::git
   include maven::maven
-  include java::sdk
+  include jenkins::jenkins
   include loja_virtual::params
 
   git::config { "git-config":
