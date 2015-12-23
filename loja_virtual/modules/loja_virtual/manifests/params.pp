@@ -22,4 +22,23 @@ class loja_virtual::params {
     "driver" => "com.mysql.jdbc.Driver",
     "url" => "jdbc:mysql://192.168.33.10:3306/",
   }
+
+  $git_config_global = {
+    "user.name" => "Jenkins User",
+    "user.email" => "jenkins@info.com",
+    "core.editor" => "vim",
+  }
+
+  $jenkins_plugins = [
+    'ssh-credentials',
+    'credentials',
+    'scm-api',
+    'git-client',
+    'git',
+    'maven-plugin',
+    'javadoc',
+    'mailer',
+    'greenballs',
+    'ws-cleanup'
+  ]
 }
