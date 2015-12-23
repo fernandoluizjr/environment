@@ -13,10 +13,10 @@ if which puppet >/dev/null && [ "$(puppet --version)" == "3.8.4" ]; then
   echo "Puppet is already installed"
 else
   apt-get update
-  wget -qO /tmp/puppetlabs-release-precise.deb \
-	https://apt.puppetlabs.com/puppetlabs-release-precise.deb
-  dpkg -i /tmp/puppetlabs-release-precise.deb
-  rm /tmp/puppetlabs-release-precise.deb
+  wget -qO /tmp/puppetlabs-release-trusty.deb \
+	https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+  dpkg -i /tmp/puppetlabs-release-trusty.deb
+  rm /tmp/puppetlabs-release-trusty.deb
   apt-get update
   echo "Installing puppet"
   apt-get install --yes puppet
