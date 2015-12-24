@@ -9,11 +9,11 @@ class loja_virtual {
 # precisamos garantir que o comando rode antes da
 # instalacao de qualquer pacote no sistema
 
-# class { 'apt':
-#   update => {
-#     frequency => 'always',
-#   },
-# }
+  class { 'apt':
+    update => {
+      frequency => 'always',
+    },
+  }
 
 # A flecha -> impoe uma restricao na ordem de execucao dos recursos.
 # Da mesma forma que o parametro require indica uma dependencia entre
@@ -25,7 +25,7 @@ class loja_virtual {
 # Como deixamos a expressao de busca em branco, selecionamos todos os
 # recursos do tipo package.
 
-# Class['apt'] -> Package <| |>
+  Class['apt'] -> Package <| |>
 
 # Outro exemplo:
 # Class['apt::update'] -> Package<| |>
