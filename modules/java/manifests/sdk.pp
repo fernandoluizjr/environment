@@ -1,5 +1,5 @@
 class java::sdk {
-  include java::repo
+  contain java::repo
 
   exec { "accept-license":
     command => "/bin/echo oracle-java8-installer \
@@ -16,7 +16,7 @@ class java::sdk {
     ensure => installed,
     require => [
                 Exec["accept-license"],
-                Class['java::repo']
+                Class['java::repo'],
                ],
   }
 }

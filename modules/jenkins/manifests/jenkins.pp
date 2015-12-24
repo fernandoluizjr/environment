@@ -1,5 +1,5 @@
 class jenkins::jenkins {
-  include jenkins::repo
+  contain jenkins::repo
 
   package { 'jenkins-package':
     require => Class['jenkins::repo'],
