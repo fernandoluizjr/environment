@@ -1,8 +1,8 @@
 class jenkins::jenkins {
-  contain jenkins::repo
+  require jenkins::repo
 
-  package { 'jenkins-package':
-    require => Class['jenkins::repo'],
+  package { 'jenkins':
+    require => [Class['jenkins::repo'],Class['apt::update'],],
   }
 
   service { 'jenkins':
@@ -10,6 +10,6 @@ class jenkins::jenkins {
     enable => true,
     hasstatus => true,
     hasrestart => true,
-    require => Package['jenkins-package'],
+    require => Package['jenkins'],
   }
 }

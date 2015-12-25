@@ -1,7 +1,7 @@
 class java::sdk {
-  contain java::repo
+  require java::repo
 
-  exec { "accept-license":
+  exec { 'accept-java8-license':
     command => "/bin/echo oracle-java8-installer \
 			shared/accepted-oracle-license-v1-1 \
 			select true | /usr/bin/debconf-set-selections",
@@ -12,11 +12,8 @@ class java::sdk {
 			| /bin/grep true",
   }
 
-  package { "oracle-java8-installer":
+  package { 'oracle-java8-installer':
     ensure => installed,
-    require => [
-                Exec["accept-license"],
-                Class['java::repo'],
-               ],
+    require => [Exec['accept-java8-license'],Class['apt::update'],],
   }
 }
