@@ -2,7 +2,10 @@ class jenkins::jenkins {
   require jenkins::repo
 
   package { 'jenkins':
-    require => [Class['jenkins::repo'],Class['apt::update'],],
+    require => [
+                Class['jenkins::repo'],
+                Class['apt::update'],
+               ],
   }
 
   service { 'jenkins':

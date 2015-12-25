@@ -14,6 +14,9 @@ class java::sdk {
 
   package { 'oracle-java8-installer':
     ensure => installed,
-    require => [Exec['accept-java8-license'],Class['apt::update'],],
+    require => [
+                Exec['accept-java8-license'],
+                Class['apt::update'],
+               ],
   }
 }
