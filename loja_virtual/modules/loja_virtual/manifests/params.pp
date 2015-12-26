@@ -39,6 +39,6 @@ class loja_virtual::params {
     'javadoc',
     'mailer',
     'greenballs',
-    'ws-cleanup'
+    'ws-cleanup',
   ]
 }
