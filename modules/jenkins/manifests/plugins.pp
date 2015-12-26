@@ -3,11 +3,12 @@ define jenkins::plugins($plugins) {
   $plugins_host = 'https://updates.jenkins-ci.org'
   $base_url = "${plugins_host}/latest/"
 
-  file { $plugin_dir:
+  file { "$plugin_dir":
     ensure => 'directory',
     owner => 'jenkins',
     group => 'jenkins',
     mode => '0644',
+    require => Package['jenkins'],
   }
 
   $plugins.each |$plugin_name| {
