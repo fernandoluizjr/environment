@@ -10,6 +10,10 @@ class loja_virtual::ci {
     global => $loja_virtual::params::git_config_global,
   }
 
+  jenkins::config { 'jenkins-config':
+    value => $loja_virtual::params::jenkins_config,
+  }
+
   jenkins::plugins { 'jenkins-plugins':
     plugins => $loja_virtual::params::jenkins_plugins,
   }

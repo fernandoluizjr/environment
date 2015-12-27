@@ -29,6 +29,10 @@ class loja_virtual::params {
     "core.editor" => "vim",
   }
 
+  $jenkins_config = {
+    "JAVA_ARGS" => "-Xmx512m",
+  }
+
   $jenkins_plugins = [
     'ssh-credentials',
     'credentials',
