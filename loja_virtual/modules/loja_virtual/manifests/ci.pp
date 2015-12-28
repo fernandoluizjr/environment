@@ -1,6 +1,6 @@
 class loja_virtual::ci {
   include loja_virtual
-  include java::sdk
+  include java::sdk7
   include git::git
   include maven::maven
   include jenkins::jenkins
