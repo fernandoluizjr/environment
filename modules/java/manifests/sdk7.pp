@@ -1,4 +1,4 @@
-class java::sdk {
+class java::sdk7 {
   require java::repo
 
   exec { 'accept-java7-license':

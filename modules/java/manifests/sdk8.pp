@@ -1,4 +1,4 @@
-class java::sdk {
+class java::sdk8 {
   require java::repo
 
   exec { 'accept-java8-license':
