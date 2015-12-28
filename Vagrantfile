@@ -37,6 +37,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :ci do |ci_config|
     ci_config.vm.hostname = "ci"
     ci_config.vm.network :private_network, :ip => "192.168.33.14"
+    ci_config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+    end
     ci_config.vm.provision :shell do |ss|
       ss.path = "scripts/puppet_environments.sh"
       ss.args = "/workspace/environments loja_virtual ci.pp"
