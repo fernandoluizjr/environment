@@ -6,6 +6,9 @@ class loja_virtual::ci {
   include jenkins::jenkins
   include loja_virtual::params
 
+  Class['maven::maven'] -> Class['java::sdk7']
+  Class['java::sdk7'] -> Class['jenkins::jenkins']
+
   git::config { 'git-config':
     global => $loja_virtual::params::git_config_global,
   }
