@@ -42,6 +42,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.customize ["modifyvm", :id, "--cpus", "2"]
     end
     ci_config.vm.provision :shell do |ss|
+      ss.path = "scripts/puppet_modules.sh"
+      ss.args = "puppetlabs-apache"
+    end
+    ci_config.vm.provision :shell do |ss|
       ss.path = "scripts/puppet_environments.sh"
       ss.args = "/workspace/environments loja_virtual ci.pp"
     end
