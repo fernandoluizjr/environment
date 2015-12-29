@@ -30,7 +30,7 @@ class loja_virtual::params {
   }
 
   $jenkins_config = {
-    "JAVA_ARGS" => "-Xmx1024m",
+    "JAVA_ARGS" => "-Xmx1536m",
   }
 
   $jenkins_plugins = [
