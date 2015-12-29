@@ -22,4 +22,9 @@ class maven::maven {
     mode => '0644',
     content => "PATH=\$PATH:/opt/$maven_archive-$maven_version/bin",
   }
+
+  file { '/usr/share/maven':
+    ensure => 'link',
+    target => "/opt/$maven_archive-$maven_version",
+  }
 }
