@@ -3,12 +3,16 @@ class ruby::rbenv {
 
   exec { 'rbenv-git':
     command => "/usr/bin/git clone https://github.com/rbenv/rbenv.git ${rbenv_home}",
+    user => 'vagrant',
+    group => 'vagrant',
     unless => "/bin/ls ${rbenv_home}",
     require => Package['git'],
   }
 
   exec { 'compile-rbenv':
     command => "${rbenv_home}/src/configure && /usr/bin/make -C src",
+    user => 'vagrant',
+    group => 'vagrant',
     cwd => "${rbenv_home}",
     unless => "/bin/ls ${rbenv_home}/libexec/rbenv-realpath.dylib", # make will generate this lib
     require => Exec['rbenv-git'],
