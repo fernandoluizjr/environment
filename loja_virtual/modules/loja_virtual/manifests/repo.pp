@@ -35,4 +35,10 @@ class loja_virtual::repo($basedir, $reponame) {
     docroot => $basedir,
     servername => $ipaddress_eth1, #variavel do facter
   }
+
+# Instala a rubygem FPM para criar pacotes .deb
+  package { 'fpm':
+    ensure => 'installed',
+    provider => 'gem',
+  }
 }
