@@ -17,7 +17,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #    s.args = "user password localhost 3128"
 #  end
 
-  config.vm.provision "shell", path: "scripts/puppet_install.sh"
+  config.vm.provision "shell", inline: "apt-get update"
+  config.vm.provision "shell", path: "scripts/bootstrap.sh"
   config.vm.provision "shell", path: "scripts/puppet_modules.sh", args: "puppetlabs-apt"
 
 #  config.vm.define :mon do |mon_config|
