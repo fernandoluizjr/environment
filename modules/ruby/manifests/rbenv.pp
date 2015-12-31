@@ -20,7 +20,7 @@ class ruby::rbenv {
 
   file { '/etc/profile.d/append-rbenv-path.sh':
     mode => '0644',
-    content => "PATH=${rbenv_home}/bin:\$PATH",
+    content => "PATH=${rbenv_home}/bin:\$PATH\neval \"\$(rbenv init -)\"\n",
     require => Exec['compile-rbenv'],
   }
 }
