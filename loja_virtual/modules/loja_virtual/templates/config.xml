@@ -70,6 +70,16 @@
   </buildWrappers>
   <prebuilders/>
   <postbuilders/>
+    <hudson.tasks.Shell>
+      <command>
+        fpm -s dir -t deb -C combined/target --prefix \
+        /var/lib/tomcat7/webapps/ -d tomcat7 -n devopsnapratica \
+        -v $BUILD_NUMBER.master -a noarch devopsnapratica.war \
+        &amp;&amp; reprepro -V -b <%= @repo_dir %> includedeb \
+        <%= @repo_name %> *.deb
+      </command>
+    </hudson.tasks.Shell>
+  </postbuilders>
   <runPostStepsIfResult>
     <name>FAILURE</name>
     <ordinal>2</ordinal>
