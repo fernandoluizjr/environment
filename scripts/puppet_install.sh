@@ -1,14 +1,5 @@
 #!/bin/bash
 
-# Remove puppet and other gems instaled by vagrant in precise64 box only
-if [ -d /opt/vagrant_ruby ]; then
-  echo "Removing directory /opt/vagrant_ruby from system and path"
-  # TODO: Removing from PATH is not working since vagrant provision put it again
-  export PATH=${PATH#/opt/vagrant_ruby/bin:}
-  export PATH=${PATH%:/opt/vagrant_ruby/bin}
-  rm -rf /opt/vagrant_ruby
-fi
-
 if which puppet >/dev/null && [ "$(puppet --version)" == "3.8.4" ]; then
   echo "Puppet is already installed"
 else
