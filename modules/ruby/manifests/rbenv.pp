@@ -23,4 +23,12 @@ class ruby::rbenv {
     content => "PATH=${rbenv_home}/bin:\$PATH\neval \"\$(rbenv init -)\"\n",
     require => Exec['compile-rbenv'],
   }
+
+  exec { 'ruby-build-git':
+    command => "/usr/bin/git clone https://github.com/rbenv/ruby-build.git ${rbenv_home}/plugins/ruby-build",
+    user => 'vagrant',
+    group => 'vagrant',
+    unless => "/bin/ls ${rbenv_home}/plugins/ruby-build",
+    require => Exec['rbenv-git'],
+  }
 }
