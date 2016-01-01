@@ -4,7 +4,7 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.0">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.1">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -69,13 +69,14 @@
     </hudson.plugins.ws__cleanup.PreBuildCleanup>
   </buildWrappers>
   <prebuilders/>
-  <postbuilders/>
+  <postbuilders>
     <hudson.tasks.Shell>
       <command>fpm -s dir -t deb -C combined/target --prefix \
-        /var/lib/tomcat7/webapps/ -d tomcat7 -n devopsnapratica \
-        -v $BUILD_NUMBER.master -a noarch devopsnapratica.war \
-        &amp;&amp; reprepro -V -b <%= @repo_dir %> includedeb \
-        <%= @repo_name %> *.deb</command>
+/var/lib/tomcat7/webapps/ -d tomcat7 -n devopsnapratica \
+-v $BUILD_NUMBER.master -a noarch devopsnapratica.war \
+&amp;&amp; reprepro -V -b <%= @repo_dir %> includedeb \
+<%= @repo_name %> *.deb
+      </command>
     </hudson.tasks.Shell>
   </postbuilders>
   <runPostStepsIfResult>
