@@ -41,6 +41,8 @@ class loja_virtual::ci {
     '/var/lib/jenkins/jobs/loja-virtual-devops'
   ]
 
+  $repo_dir = '/var/lib/apt/repo' # repositorio reprepro para os .deb
+  $repo_name = 'devopspkgs' # nome do repositorio de releases desta app
   $project_repository_url = 'https://github.com/fernandoluizjr/DemoSite'
   $repository_poll_interval = '* * * * *'
   $maven_goal = 'clean install -DskipTests=true'
@@ -63,9 +65,6 @@ class loja_virtual::ci {
   }
 
 # Cria um repositorio de pacotes para os releases da loja_virtual
-  $repo_dir = '/var/lib/apt/repo'
-  $repo_name = 'devopspkgs'
-
   class { 'loja_virtual::repo':
     baserepodir => $repo_dir,
     reponame => $repo_name,

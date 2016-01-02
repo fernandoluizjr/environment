@@ -74,8 +74,8 @@
       <command>fpm -s dir -t deb -C site/target --prefix \
 /var/lib/tomcat7/webapps/ -d tomcat7 -n devopsnapratica \
 -v $BUILD_NUMBER.master -a noarch mycompany.war \
-&amp;&amp; reprepro -V -b <%= @baserepodir %> includedeb \
-<%= @reponame %> *.deb
+&amp;&amp; reprepro -V -b <%= @repo_dir %> includedeb \
+<%= @repo_name %> *.deb
       </command>
     </hudson.tasks.Shell>
   </postbuilders>
