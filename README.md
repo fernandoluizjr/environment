@@ -2,7 +2,7 @@
 
 ![Image of my puppet modules classes and type-defined](https://github.com/fernandoluizjr/environment/blob/master/images/puppet_module_class_typedef.png)
 
-You have to generate key-pairs to sign the packages in repository:
+When using CI machine, you have to generate key-pairs to sign the packages in repository:
 
 `sudo apt-get install haveged`
 
