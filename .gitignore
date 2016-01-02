@@ -1,1 +1,6 @@
-.vagrant/
+.vagrant
+librarian/.tmp
+librarian/.librarian
+librarian/modules
+librarian/Puppetfile.lock
+*.tgz
