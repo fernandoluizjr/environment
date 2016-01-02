@@ -1,14 +1,14 @@
 class loja_virtual::ci {
   include loja_virtual
-  include java::sdk7
+  include java::sdk8
   include git::git
   include maven::maven
   include jenkins::jenkins
   include loja_virtual::params
 
 # Garante que o maven seja instalado antes do sdk e este antes do jenkins
-  Class['maven::maven'] -> Class['java::sdk7']
-  Class['java::sdk7'] -> Class['jenkins::jenkins']
+  Class['maven::maven'] -> Class['java::sdk8']
+  Class['java::sdk8'] -> Class['jenkins::jenkins']
 
 # Configura o git
   git::config { 'git-config':
@@ -41,10 +41,10 @@ class loja_virtual::ci {
     '/var/lib/jenkins/jobs/loja-virtual-devops'
   ]
 
-  $project_repository_url = 'https://github.com/fernandoluizjr/loja-virtual-devops'
+  $project_repository_url = 'https://github.com/fernandoluizjr/DemoSite'
   $repository_poll_interval = '* * * * *'
-  $maven_goal = 'install'
-  $archive_artifacts = 'combined/target/*.war'
+  $maven_goal = 'clean install -DskipTests=true'
+  $archive_artifacts = 'site/target/*.war'
 
   file { $job_structure:
     ensure => 'directory',
@@ -67,7 +67,7 @@ class loja_virtual::ci {
   $repo_name = 'devopspkgs'
 
   class { 'loja_virtual::repo':
-    basedir => $repo_dir,
+    baserepodir => $repo_dir,
     reponame => $repo_name,
   }
 }

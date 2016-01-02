@@ -1,4 +1,4 @@
-class loja_virtual::repo($basedir, $reponame) {
+class loja_virtual::repo($baserepodir, $reponame) {
 
 # Instala o gerenciador de repositorio de pacotes
   package { 'reprepro':
@@ -7,8 +7,8 @@ class loja_virtual::repo($basedir, $reponame) {
 
 # Cria o diretorio raiz do gerenciador de repositorios
   $repo_structure = [
-    "$basedir",
-    "$basedir/conf",
+    "$baserepodir",
+    "$baserepodir/conf",
   ]
 
   file { $repo_structure:
@@ -19,11 +19,11 @@ class loja_virtual::repo($basedir, $reponame) {
   }
 
 # Cria o arquivo de configuracao do gerenciador de repositorios
-  file { "$basedir/conf/distributions":
+  file { "$baserepodir/conf/distributions":
     owner => 'jenkins',
     group => 'jenkins',
     content => template('loja_virtual/distributions.erb'),
-    require => File["$basedir/conf"],
+    require => File["$baserepodir/conf"],
   }
 
 # Cria um servidor apache para expor os releases via HTTP
@@ -32,7 +32,7 @@ class loja_virtual::repo($basedir, $reponame) {
 
   apache::vhost { "$reponame":
     port => 80,
-    docroot => $basedir,
+    docroot => $baserepodir,
     servername => $ipaddress_eth1, #variavel do facter
   }
 
