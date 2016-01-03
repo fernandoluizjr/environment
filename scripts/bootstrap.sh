@@ -1,33 +1,43 @@
 #!/bin/bash
 
+ruby_major_version="2.3"
 ruby_version="2.3.0"
 
-# Remove ruby packages handled by apt
+echo "Removing ruby packages handled by apt"
 apt-get purge --yes ruby
 apt-get autoremove --yes
+echo "Done"
 
 if which ruby >/dev/null && [ "$(ruby -v | cut -c6-10)" == $ruby_version ]; then
-  echo "Ruby is already installed"
+  echo "Ruby $ruby_version is already compiled and installed"
 else
-# install some dependencies before compile
+  echo "Installing some library dependencies needed for compile ruby"
   apt-get install -y libgdbm-dev libssl-dev libreadline-dev zlib1g-dev
+  echo "Done"
 
-# Download ruby and compile it
-  echo "Installing ruby"
-  wget -qO /tmp/ruby-2.3.0.tar.gz \
-	https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.0.tar.gz
-  cd /tmp && gunzip -c /tmp/ruby-2.3.0.tar.gz | tar -xf-
-  cd /tmp/ruby-2.3.0 && ./configure && make && make install
-  echo "Ruby installed!"
+  echo "Downloading ruby $ruby_version sources"
+  wget -qO /tmp/ruby-$ruby_version.tar.gz \
+	https://cache.ruby-lang.org/pub/ruby/$ruby_major_version/ruby-$ruby_version.tar.gz
+  echo "Done"
+
+  echo "Compiling and installing ruby $ruby_version"
+  cd /tmp && gunzip -c /tmp/ruby-$ruby_version.tar.gz | tar -xf-
+  cd /tmp/ruby-$ruby_version && ./configure && make && make install
+  rm -f /tmp/ruby-$ruby_version.tar.gz
+  rm -rf /tmp/ruby-$ruby_version
+  echo "Ruby $ruby_version installed!"
 fi
 
-# Install puppet as a ruby gem
-if which puppet >/dev/null; then
-  echo "Puppet is already installed as a ruby gem"
+if which bundler >/dev/null; then
+  echo "gem bundler is already installed"
 else
-  echo "Installing puppet"
-  gem install puppet
-  echo "Puppet installed!"
+  echo "Installing gem bundler"
+  gem install bundler
+  echo "Done"
 fi
+
+echo "Installing gems with bundler"
+bundle install
+echo "Done"
 
 exit 0
