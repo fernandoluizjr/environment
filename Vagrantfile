@@ -17,9 +17,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #    s.args = "user password localhost 3128"
 #  end
 
-  config.vm.provision "shell", inline: "apt-get update"
-  config.vm.provision "shell", path: "scripts/bootstrap.sh"
-  config.vm.provision "shell", path: "scripts/puppet_modules.sh", args: "puppetlabs-apt"
+  config.vm.provision "shell", path: "bootstrap.sh"
+  config.vm.provision "shell", privileged: false, inline: "bundle install --gemfile /workspace/environments/Gemfile"
+  config.vm.provision "shell", privileged: false, inline: "cd /workspace/environments && librarian-puppet install --path librarian/modules"
 
 #  config.vm.define :mon do |mon_config|
 #    mon_config.vm.hostname = "monitoring"
@@ -41,10 +41,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ci_config.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--memory", "2048"]
       vb.customize ["modifyvm", :id, "--cpus", "2"]
-    end
-    ci_config.vm.provision :shell do |ss|
-      ss.path = "scripts/puppet_modules.sh"
-      ss.args = "puppetlabs-apache"
     end
     ci_config.vm.provision :shell do |ss|
       ss.path = "scripts/puppet_environments.sh"
