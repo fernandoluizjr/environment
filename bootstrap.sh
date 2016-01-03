@@ -36,8 +36,4 @@ else
   echo "Done"
 fi
 
-echo "Installing gems with bundler"
-bundle install
-echo "Done"
-
 exit 0
