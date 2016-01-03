@@ -23,8 +23,7 @@ else
   echo "Compiling and installing ruby $ruby_version"
   cd /tmp && gunzip -c /tmp/ruby-$ruby_version.tar.gz | tar -xf-
   cd /tmp/ruby-$ruby_version && ./configure && make && make install
-  rm -f /tmp/ruby-$ruby_version.tar.gz
-  rm -rf /tmp/ruby-$ruby_version
+  cd /tmp && rm -f ruby-$ruby_version.tar.gz && rm -rf ruby-$ruby_version
   echo "Ruby $ruby_version installed!"
 fi
 
