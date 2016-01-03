@@ -1,4 +1,5 @@
 .vagrant
+Gemfile.lock
 librarian/.tmp
 librarian/.librarian
 librarian/modules
