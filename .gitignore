@@ -1,7 +1,7 @@
 .vagrant
 Gemfile.lock
-Puppetfile.lock
-.tmp
-.librarian
+librarian/Puppetfile.lock
+librarian/.tmp
+librarian/.librarian
 librarian/modules
 *.tgz
