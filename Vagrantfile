@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 # README: Vagrant already has ruby and devkit embedded to install plugins,
-# but you have to install vagrant in a directory without espaces to work.
+# but you have to install vagrant in a directory without spaces to work.
 # Also in directory vagrant.d include your generated ssh key vagrant.ppk
 
 VAGRANTFILE_API_VERSION = "2"
@@ -10,7 +10,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.ssh.insert_key = false
-  config.vm.synced_folder "../", "/workspace"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder ".", "/etc/puppetlabs/code/environments", owner: "root", group: "root"
 
 #  config.vm.provision :shell do |s|
 #    s.path = "scripts/proxy_settings.sh"
@@ -18,8 +19,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #  end
 
   config.vm.provision "shell", path: "bootstrap.sh"
-  config.vm.provision "shell", privileged: false, inline: "bundle install --gemfile /workspace/environments/Gemfile"
-  config.vm.provision "shell", privileged: false, inline: "cd /workspace/environments && librarian-puppet install --path librarian/modules"
+  config.vm.provision "shell", inline: "bundle install --gemfile /etc/puppetlabs/code/environments/Gemfile", privileged: false
+  config.vm.provision "shell", inline: "cd /etc/puppetlabs/code/environments && librarian-puppet install --path librarian/modules"
 
 #  config.vm.define :mon do |mon_config|
 #    mon_config.vm.hostname = "monitoring"
