@@ -5,7 +5,7 @@ puppet_conf=$confdir/puppet.conf
 external_environments_dir=$1
 active_node_environment=$2
 manifest_file=$external_environments_dir/$active_node_environment/manifests/$3
-base_module_path="$external_environments_dir/modules:/etc/puppetlabs/code/modules:/opt/puppetlabs/puppet/modules"
+base_module_path="$external_environments_dir/librarian/modules:$external_environments_dir/modules:/etc/puppetlabs/code/modules:/opt/puppetlabs/puppet/modules"
 
 # create confdir directory
 if [ ! -d $confdir ]; then
