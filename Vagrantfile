@@ -20,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "shell", path: "bootstrap.sh"
   config.vm.provision "shell", inline: "bundle install --gemfile /etc/puppetlabs/code/environments/Gemfile", privileged: false
-  config.vm.provision "shell", inline: "cd /etc/puppetlabs/code/environments && librarian-puppet install --path librarian/modules"
+  config.vm.provision "shell", inline: "cd /etc/puppetlabs/code/environments/librarian && librarian-puppet install"
 
 #  config.vm.define :mon do |mon_config|
 #    mon_config.vm.hostname = "monitoring"
