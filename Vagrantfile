@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #    s.args = "user password localhost 3128"
 #  end
 
-  config.vm.provision "shell", path: "bootstrap.sh"
+  config.vm.provision "shell", path: "scripts/bootstrap.sh"
   config.vm.provision "shell", inline: "bundle install --gemfile /etc/puppetlabs/code/environments/Gemfile", privileged: false
   config.vm.provision "shell", inline: "cd /etc/puppetlabs/code/environments/librarian && librarian-puppet install --path modules"
 
