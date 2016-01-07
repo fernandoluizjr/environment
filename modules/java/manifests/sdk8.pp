@@ -13,6 +13,6 @@ class java::sdk8 {
     require => [
                 Exec['accept-java8-license'],
                 Class['apt::update'],
-               ],
+    ],
   }
 }

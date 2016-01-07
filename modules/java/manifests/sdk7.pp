@@ -13,6 +13,6 @@ class java::sdk7 {
     require => [
                 Exec['accept-java7-license'],
                 Class['apt::update'],
-               ],
+    ],
   }
 }

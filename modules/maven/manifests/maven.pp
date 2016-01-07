@@ -7,14 +7,14 @@ class maven::maven {
 
   exec { 'download-maven':
     command => "/usr/bin/wget -q $maven_base_url/$maven_version/binaries/$maven_package",
-	cwd => '/tmp',
+    cwd => '/tmp',
     unless => '/usr/bin/which mvn'
   }
 
   exec { 'unpack-maven':
     command => "/bin/gunzip -c /tmp/$maven_package | /bin/tar -xf-",
-	cwd => '/opt',
-	unless => "/bin/ls /opt/$maven_archive-$maven_version",
+    cwd => '/opt',
+    unless => "/bin/ls /opt/$maven_archive-$maven_version",
     require => Exec['download-maven'],
   }
 

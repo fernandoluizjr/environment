@@ -5,7 +5,7 @@ class jenkins::jenkins {
     require => [
                 Class['jenkins::repo'],
                 Class['apt::update'],
-               ],
+    ],
   }
 
   service { 'jenkins':

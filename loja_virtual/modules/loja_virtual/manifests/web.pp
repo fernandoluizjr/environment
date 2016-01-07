@@ -24,9 +24,9 @@ class loja_virtual::web {
     release => 'devopspkgs',
     repos => 'main',
     key => {
-            id => 'C8AB3568AE4AEFB0D1E33A08BB8281D1758D9AC8',
-            source => 'http://192.168.33.14/devopspkgs.gpg'
-           },
+      id => 'C8AB3568AE4AEFB0D1E33A08BB8281D1758D9AC8',
+      source => 'http://192.168.33.14/devopspkgs.gpg'
+    },
   }
 
   package { "devopsnapratica":
