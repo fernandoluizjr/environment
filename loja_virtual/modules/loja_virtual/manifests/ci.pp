@@ -38,7 +38,8 @@ class loja_virtual::ci {
 # Cria e configura o job para o build da loja_virtual
   $job_structure = [
     '/var/lib/jenkins/jobs/',
-    '/var/lib/jenkins/jobs/loja-virtual-devops'
+    '/var/lib/jenkins/jobs/loja-virtual-devops',
+    '/var/lib/jenkins/jobs/loja-virtual-puppet',
   ]
 
   $repo_dir = '/var/lib/apt/repo' # repositorio reprepro para os .deb
@@ -60,6 +61,15 @@ class loja_virtual::ci {
     owner => 'jenkins',
     group => 'jenkins',
     content => template('loja_virtual/config.xml'),
+    require => File[$job_structure],
+    notify => Service['jenkins'],
+  }
+
+  file { "${job_structure[2]}/config.xml":
+    mode => '0644',
+    owner => 'jenkins',
+    group => 'jenkins',
+    content => template('loja_virtual/config-puppet.xml'),
     require => File[$job_structure],
     notify => Service['jenkins'],
   }
