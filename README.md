@@ -11,7 +11,7 @@ When using CI machine, you have to generate key-pairs to sign the packages in re
 `gpg --gen-key`
 
 Choose a RSA key with 2048 bytes of size that never expires. Also insert a name and an e-mail for the key.
-Take note of the fingerprint generated and modify the apt::source resource in lojavirtual web.pp
+Take notes of the fingerprint generated and modify the apt::source resource in the lojavirtual's web.pp manifest.
 
 Export the key into the repository directory:
 
