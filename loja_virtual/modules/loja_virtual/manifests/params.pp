@@ -30,7 +30,7 @@ class loja_virtual::params {
   }
 
   $jenkins_config = {
-    "JAVA_ARGS" => "-Xmx1536m",
+    "JAVA_ARGS" => "-Xmx768m",
   }
 
   $jenkins_plugins = [
@@ -44,5 +44,7 @@ class loja_virtual::params {
     'mailer',
     'greenballs',
     'ws-cleanup',
+    'parameterized-trigger',
+    'copyartifact',
   ]
 }
