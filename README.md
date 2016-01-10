@@ -16,3 +16,5 @@ Take notes of the fingerprint generated and modify the apt::source resource in t
 Export the key into the repository directory:
 
 `gpg --export --armor info@acme.com > /var/lib/apt/repo/devopspkgs.gpg`
+
+Also, for CI machine log in the WEB machine and be able to copy artifacts and execute commands you must generate a ssh key pair in CI machine using `ssh-keygen` logged as jenkins user. After this, share the public key with WEB machine using `ssh-copy-id`
