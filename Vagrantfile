@@ -27,14 +27,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #    mon_config.vm.network :private_network, :ip => "192.168.33.10"
 #  end
 
-#  config.vm.define :dev do |dev_config|
-#    dev_config.vm.hostname = "development"
-#    dev_config.vm.network :private_network, :ip => "192.168.33.12"
-#    dev_config.vm.provision :shell do |ss|
-#      ss.path = "scripts/puppet_environments.sh"
-#      ss.args = "/etc/puppetlabs/code/environments development development.pp"
-#    end
-#  end
+  config.vm.define :dev do |dev_config|
+    dev_config.vm.hostname = "development"
+    dev_config.vm.network :private_network, :ip => "192.168.33.12"
+    dev_config.vm.provision :shell do |ss|
+      ss.path = "scripts/puppet_environments.sh"
+      ss.args = "/etc/puppetlabs/code/environments development development.pp"
+    end
+  end
 
 #  config.vm.define :ci do |ci_config|
 #    ci_config.vm.hostname = "ci"
